@@ -1,0 +1,18 @@
+name: runner-workflow
+
+on: workflow_dispatch
+
+jobs:
+  runner-ubuntu:
+    name: runner-workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: get Os ubuntu name
+        run: echo "Os name is ${{ runner.os }}"
+
+  runner-windows:
+    name: runner-windows
+    runs-on: windows-latest
+    steps:
+      - name: get Windows name
+        run: echo "Os name is ${{ runner.os }}"
