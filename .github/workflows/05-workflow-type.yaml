@@ -2,14 +2,15 @@ name: 05-workflow-event-type-01
 
 on:
   pull_request:
-    - types: [ opened, synchronize, reopened ]
-  branches:
-    - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+      - main
 
 jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo event type
-        run:
-          echo "Event type: ${{ github.event_name }}"
+      - run: echo "This workflow runs on pull request events of type opened, synchronize, and reopened on the main branch."
