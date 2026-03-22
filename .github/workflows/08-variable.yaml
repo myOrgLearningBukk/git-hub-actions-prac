@@ -1,0 +1,25 @@
+name: 08-using variables
+
+on:
+  push:
+    workflow_dispatch:
+
+env:
+  WORKFLOW_DIR: 'I am workfloe env var'
+  OVERWRITTEN: 'I will be overwritten'
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    env:
+      JOB_DIR: 'I am job env var'
+      OVERWRITTEN: 'I will be overwritten by step env var'
+    steps:
+      - name: Echo workflow and job variables
+        env:
+          STEP_VAR: 'I am step env var'
+          OVERWRITTEN: 'I am the final value of overwritten variable'
+        run: |
+          echo "Workflow variable: $WORKFLOW_DIR"
+          echo "Job variable: $JOB_DIR"
+          echo "Overwritten variable: $OVERWRITTEN"
